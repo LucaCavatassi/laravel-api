@@ -28,7 +28,11 @@
         <h6 class="fw-bold text-primary mt-3">Slug ID</h6>
         <p>{{ $project->slug }}</p>
 
-        <h6 class="fw-bold text-primary mt-3">Preview Image</h6>
-        <img src="{{ asset("storage/" . $project->cover_img) }}" alt="">
+        <h6 class="fw-bold text-primary mt-3">Immagini anteprima</h6>
+        @if ($project->cover_img !== null)
+            <img src="{{ asset("storage/" . $project->cover_img) }}" alt="">
+        @else
+            <span>Nessuna immagine di anteprima.</span>
+        @endif
     </div>
 @endsection

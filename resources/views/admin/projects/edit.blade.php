@@ -19,7 +19,7 @@
                 
             @endif
 
-            <form action="{{ route("admin.projects.update", ["project" => $project]) }}" method="POST">
+            <form action="{{ route("admin.projects.update", ["project" => $project]) }}" method="POST" enctype="multipart/form-data">
                 @method("PUT")
                 @csrf
                 <div class="mb-3">
@@ -51,6 +51,11 @@
                                 @endif
                             @endforeach
                         </div>
+                    </div>
+
+                    <div>
+                        <label class="mt-2 mb-2" for="cover_img">Selezione un immagine come anteprima</label>
+                        <input id="cover_img" name="cover_img" type="file">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Invia</button>
