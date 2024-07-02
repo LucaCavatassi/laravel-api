@@ -1,0 +1,32 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Portfolio API",
+        "description": "API for portfolio",
+        "contact": {
+            "email": "luca.cavatassi@thebest.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/projects": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Get all projects",
+                "operationId": "fbc21feeb3df8a2cb519efb6480ae7d9",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    }
+}

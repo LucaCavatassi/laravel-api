@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    /**
+     *
+     *  @OA\Get(
+     *      path="/api/projects",
+     *      tags={"Project"},
+     *      summary="Get all projects",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success"
+     *      )
+     *  )
+     *
+     */
+
+
     public function index() {
         $projects = Project::with("technologies", "type")->paginate(3);
         $data = [
