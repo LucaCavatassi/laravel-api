@@ -75,3 +75,4 @@ function show_all() {
         curElem.classList.remove("d-none");
     }
 };
+

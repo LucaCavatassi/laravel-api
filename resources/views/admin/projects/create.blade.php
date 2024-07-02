@@ -50,7 +50,7 @@
                         </div>
                         <div>
                             <label class="mt-2 mb-2" for="cover_img">Selezione un immagine come anteprima</label>
-                            <input id="cover_img" name="cover_img" type="file">
+                            <input id="cover_img" name="cover_img" type="file" >
                         </div>
                     </div>
                 </div>
