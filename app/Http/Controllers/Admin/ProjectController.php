@@ -79,7 +79,7 @@ class ProjectController extends Controller
     public function show(string $slug)
     {
         $project = Project::where("slug", $slug)->first();
-        dd($project);
+        // dd($project);
         return view("admin.projects.show", compact("project"));
     }
 
@@ -105,9 +105,16 @@ class ProjectController extends Controller
         $data = $request->validated();
         
         $project->slug = Str::slug($request->title);
+        if ($request->hasFile("cover_img")) {
+            if($project->cover_img){
+                Storage::delete($project->cover_img);
+            }
+            $image_path = Storage::put('post_images', $request->cover_img);
+            $data['cover_img'] = $image_path;
+        }
         
         $project->update($data);
-        $project->cover_img = Storage::put("uploads", $data["cover_img"]);
+
         // dd($project);
         $project->technologies()->sync($request->technologies);
         // dd($project);
