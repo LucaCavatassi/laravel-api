@@ -53,9 +53,12 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="d-flex flex-column">
                         <label class="mt-2 mb-2" for="cover_img">Selezione un immagine come anteprima</label>
                         <input id="cover_img" name="cover_img" type="file">
+
+                        <span class="">Immagine attuale</span>
+                        <img src="{{ asset("storage/" . $project->cover_img) }}" alt="">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Invia</button>

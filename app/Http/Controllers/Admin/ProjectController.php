@@ -79,7 +79,7 @@ class ProjectController extends Controller
     public function show(string $slug)
     {
         $project = Project::where("slug", $slug)->first();
-        // dd($project);
+        dd($project);
         return view("admin.projects.show", compact("project"));
     }
 
@@ -105,11 +105,11 @@ class ProjectController extends Controller
         $data = $request->validated();
         
         $project->slug = Str::slug($request->title);
-        $project->update($data);
-
-        $project->technologies()->sync($request->technologies);
-        // dd($project);
         
+        $project->update($data);
+        $project->cover_img = Storage::put("uploads", $data["cover_img"]);
+        // dd($project);
+        $project->technologies()->sync($request->technologies);
         // dd($project);
         return redirect()->route("admin.projects.index")->with("messageEdit", "Il progetto ". $project->title . " è stato aggiornato con successo!");;
 

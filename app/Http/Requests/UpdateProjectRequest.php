@@ -27,6 +27,7 @@ class UpdateProjectRequest extends FormRequest
             "description" => "max:300",
             "type_id"=>"required|exists:types,id",
             "technologies"=>"nullable|exists:technologies,id",
+            "cover_img" => "nullable"
         ];
     }
 
@@ -40,7 +41,6 @@ class UpdateProjectRequest extends FormRequest
             "type_id.required" => "Il linguaggio è necessario per modificare un nuovo progetto!",
             "type_id.exists" => "Questo linguaggio non esiste.",
             "technologies.exists"=>"Questa tecnologia non è valida.",
-
         ];
     }
 }
