@@ -27,5 +27,8 @@
         </div>
         <h6 class="fw-bold text-primary mt-3">Slug ID</h6>
         <p>{{ $project->slug }}</p>
+
+        <h6 class="fw-bold text-primary mt-3">Preview Image</h6>
+        <img src="{{ asset("storage/" . $project->cover_img) }}" alt="">
     </div>
 @endsection

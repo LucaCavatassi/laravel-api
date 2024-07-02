@@ -10,6 +10,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -56,11 +57,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
+
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->slug = Str::slug($newProject->title);
-        // dd($newProject->technologies());
+        $newProject->cover_img = Storage::put("uploads", $data["cover_img"]);
+        // dd(img_path);
         $newProject->save();
+
     
         if ($request->has("technologies")){
             $newProject->technologies()->attach($request->technologies);
@@ -75,6 +79,7 @@ class ProjectController extends Controller
     public function show(string $slug)
     {
         $project = Project::where("slug", $slug)->first();
+        // dd($project);
         return view("admin.projects.show", compact("project"));
     }
 

@@ -19,7 +19,7 @@
                 
             @endif
 
-            <form action="{{ route("admin.projects.store") }}" method="POST">
+            <form action="{{ route("admin.projects.store") }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="titolo" class="form-label">Titolo</label>
@@ -30,7 +30,7 @@
 
                     <div class="d-flex gap-5">
                         <div class="d-flex flex-column">
-                            <label class="mt-1 mb-2" for="type">Seleziona un campo</label>
+                            <label class="mt-2 mb-2" for="type">Seleziona un campo</label>
                             <select class="fs-6 p-1" name="type_id" id="type">
                                 <option disabled="disabled" selected="selected">Seleziona un campo</option>
                                 @foreach ($types as $type)
@@ -47,6 +47,10 @@
                                     <label class="btn btn-outline-primary" for="technology - {{ $technology->id }}">{{ $technology->name }}</label>
                                 @endforeach
                             </div>
+                        </div>
+                        <div>
+                            <label class="mt-2 mb-2" for="cover_img">Selezione un immagine come anteprima</label>
+                            <input id="cover_img" name="cover_img" type="file">
                         </div>
                     </div>
                 </div>
